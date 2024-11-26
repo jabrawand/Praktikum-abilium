@@ -1,9 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
-
-import { AppComponent } from './app.component';
 import { HeroesComponent } from './heroes/heroes.component';
+import { AppComponent } from './app.component';
 
 @NgModule({
   declarations: [
@@ -12,7 +11,8 @@ import { HeroesComponent } from './heroes/heroes.component';
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    HeroesComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
