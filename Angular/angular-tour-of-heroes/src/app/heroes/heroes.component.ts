@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 
 
 import {HEROES} from '../mock-heroes';
-import { NgFor } from '@angular/common';
+import { NgFor, NgIf, UpperCasePipe } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -12,7 +13,10 @@ import { NgFor } from '@angular/common';
   templateUrl: './heroes.component.html',
   styleUrl: './heroes.component.css',
   imports: [
+    FormsModule,
+    NgIf,
     NgFor,
+    UpperCasePipe,
   ]
   
 })
