@@ -7,7 +7,7 @@ import { NgFor } from '@angular/common';
 
 
 @Component({
-  standalone: true,
+  /* standalone: true, Frage: wozu ist standalone und warum funktioniert dies bei mir nicht? */
   selector: 'app-heroes',
   templateUrl: './heroes.component.html',
   styleUrl: './heroes.component.css',
