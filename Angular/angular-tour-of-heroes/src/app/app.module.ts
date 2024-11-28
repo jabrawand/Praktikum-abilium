@@ -8,13 +8,12 @@ import { HeroDetailComponent } from './hero-detail/hero-detail.component';
 @NgModule({
   declarations: [
     AppComponent,
-    HeroDetailComponent,
-   
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HeroesComponent
+    HeroesComponent,
+    HeroDetailComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]
