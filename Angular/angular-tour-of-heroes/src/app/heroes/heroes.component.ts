@@ -28,4 +28,11 @@ export class HeroesComponent {
   onSelect(hero: Hero): void {
     this.selectedHero = hero;
   }
+  constructor(private heroService: HeroService) {}
+  getHeroes(): void {
+    this.heroes = this.heroService.getHeroes();
+  }
+  ngOnInit(): void {
+    this.getHeroes();
+  }
 }
