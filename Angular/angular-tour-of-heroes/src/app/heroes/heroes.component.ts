@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import { NgIf, NgFor, UpperCasePipe,} from '@angular/common';
+import { NgFor } from '@angular/common';
 import {FormsModule} from '@angular/forms';
 
 import {Hero} from '../hero';
@@ -15,9 +15,7 @@ import { MessageService } from '../message.service';
   styleUrls: ['./heroes.component.css'],
   imports: [
     FormsModule,
-    NgIf,
     NgFor,
-    UpperCasePipe,
     HeroDetailComponent,
   ],
 })
