@@ -13,13 +13,14 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     AppComponent,
     MessagesComponent,
     DashboardComponent,
+    HeroesComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HeroesComponent,
     HeroDetailComponent,
     AppRoutingModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
