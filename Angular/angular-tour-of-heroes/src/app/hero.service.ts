@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Hero } from './hero';
-import { HEROES } from './mock-heroes';
 import { Observable, of } from 'rxjs';
 import { MessageService } from './message.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -10,32 +9,17 @@ import { catchError, map, tap } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class HeroService {
+
+  private heroesUrl = 'api/heroes'; //URL to web api
+
+  httpOptions = {
+    headers: new HttpHeaders({'Content-Type': 'application/json'})
+  };
+  
   constructor(
     private http: HttpClient,
     private messageService: MessageService) { }
 
-    private heroesUrl = 'api/heroes';  // URL to web api
-
-    /**
- * Handle Http operation that failed.
- * Let the app continue.
- *
- * @param operation - name of the operation that failed
- * @param result - optional value to return as the observable result
- */
-private handleError<T>(operation = 'operation', result?: T) {
-  return (error: any): Observable<T> => {
-
-    // TODO: sent the error to remote logging infrastructure
-    console.error(error); // log to console instead
-
-    // TODO: better job of transforming error for user consumption
-    this.log('${operation} faild: ${error.message}');
-
-    // Let the app keep running by returning an emty result.
-    return of(result as T);
-  };
-}
   
  /** GET heroes from the server */
 getHeroes(): Observable<Hero[]> {
@@ -54,11 +38,7 @@ getHeroes(): Observable<Hero[]> {
       catchError(this.handleError<Hero>('getHero id=${id}'))
     );
   }
-  /** Log a HeroService message with the MessageService */
-private log(message: string) {
-  this.messageService.add(`HeroService: ${message}`);
-}
-
+  
 /** PUT: update the hero on the server */
 updateHero(hero: Hero): Observable<any> {
   return this.http.put(this.heroesUrl, hero, this.httpOptions).pipe(
@@ -66,9 +46,7 @@ updateHero(hero: Hero): Observable<any> {
     catchError(this.handleError<any>('updateHero'))
   );
 }
-httpOptions = {
-  headers: new HttpHeaders({'Content-Type': 'application/json'})
-};
+
 
 /** POST: add a new hero to the server */
 addHero(hero: Hero): Observable<Hero> {
@@ -100,5 +78,31 @@ searchHeroes(term: string): Observable<Hero[]> {
        this.log(`no heroes matching "${term}"`)),
     catchError(this.handleError<Hero[]>('searchHeroes', []))
   );
+}
+
+   /**
+ * Handle Http operation that failed.
+ * Let the app continue.
+ *
+ * @param operation - name of the operation that failed
+ * @param result - optional value to return as the observable result
+ */
+   private handleError<T>(operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
+  
+      // TODO: sent the error to remote logging infrastructure
+      console.error(error); // log to console instead
+  
+      // TODO: better job of transforming error for user consumption
+      this.log('${operation} faild: ${error.message}');
+  
+      // Let the app keep running by returning an emty result.
+      return of(result as T);
+    };
+  }
+
+/** Log a HeroService message with the MessageService */
+private log(message: string) {
+  this.messageService.add(`HeroService: ${message}`);
 }
 }
