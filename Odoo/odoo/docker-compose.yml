@@ -1,0 +1,43 @@
+version: '3.3'
+name: testbed
+services:
+  web:
+    platform: linux/x86_64
+    image: odoo:18.0
+    user: "root:root"
+    command: odoo --dev=all -c /etc/odoo/odoo.conf -d database
+    cpus: 4
+    volumes:
+      - odoo-web-data:/var/lib/odoo
+      - ./config:/etc/odoo
+      - ./addons:/mnt/extra-addons
+    depends_on:
+      - db
+    ports:
+      - "8069:8069"
+      - "8071:8071"
+      - "8072:8072"
+    networks:
+    - my_network
+    links:
+      - db
+  db:
+    platform: linux/x86_64
+    image: postgres:13
+    cpus: 2
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_PASSWORD=odoo
+      - POSTGRES_USER=odoo
+      - PGDATA=/var/lib/postgresql/data/pgdata
+    volumes:
+      - odoo-db-data:/var/lib/postgresql/data/pgdata
+    ports:
+      - "5432"
+    networks:
+        - my_network
+networks:
+  my_network:
+volumes:
+  odoo-web-data:
+  odoo-db-data:
