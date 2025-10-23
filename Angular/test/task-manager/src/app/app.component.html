@@ -1,0 +1,16 @@
+<h1>Task Manager</h1>
+<nav class="nav-bar">
+  <li><a routerLink="/" routerLinkActive="active" ariaCurrentWhenActive="page" >Home</a></li>
+  <li><a routerLink="/add-task">Add Task</a></li>
+  <p routerLink="task/{{id}}">Task 1</p>
+</nav>
+<div class="background-image"></div>
+<router-outlet/>
+<div class="dropdown">
+  <button class="dropbtn">Menü</button>
+  <div class="dropdown-content">
+    <a href="/">Home</a>
+    <a href="/add-task">add Task</a>
+    <a href="#">Link 3</a>
+  </div>
+</div>
