@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!--Hauptmenü-->
+    <menuitem
+        id="victorinox_root_menu"
+        name="VX"
+        sequence="10"/>
+
+    <menuitem 
+        id="dashboard_menu"
+        name="Dashboard"
+        parent="victorinox_root_menu"
+        sequence="1"
+        />
+
+    <menuitem
+        id="knives_menu"
+        name="Knives"
+        action="action_victorinox_knives_view"
+        parent="dashboard_menu"
+       />
+
+    <menuitem
+        id="knife_colors_menu"
+        name="Colors"
+        action="action_victorinox_knife_colors_view"
+        parent="dashboard_menu"
+        />
+
+</odoo>

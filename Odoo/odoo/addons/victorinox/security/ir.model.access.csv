@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+victorinox.access_vx_knives,access_vx_knives,victorinox.model_vx_knives,base.group_user,1,1,1,1
+victorinox.access_vx_knife_colors,access_vx_knife_colors,victorinox.model_vx_knife_colors,base.group_user,1,1,1,1
+
+
